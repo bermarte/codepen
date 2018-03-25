@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>verjaardaagkaartje</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Bangers">
+</head>
+
+<body>
+
+    <div id="container">
+       
+        <!--background layers -->
+        <div id="center">
+        <div id="layer_1" class="layers"></div>
+        <div id="layer_2" class="layers"></div>
+        <div id="layer_3" class="layers"></div>
+        <div id="layer_4" class="layers"></div>
+        </div>
+        
+        <div id=star class="icon-star-empty fontellos"></div>
+        <div id=thumb class="icon-thumbs-up fontellos"></div>
+        <div id=heart class="icon-heart-empty fontellos"></div>
+        <div id=smile class="icon-smile fontellos"></div>
+        <div id=music class="icon-music fontellos"></div>
+        <div id=glass class="icon-glass fontellos"></div>
+
+        <!--fontello-->
+        <!-- 0xe800 star-->
+        <!--0xe804 thumbsup-->
+        <!--0xe801 heart-->
+        <!--0xf118 smile-->
+        <!--0xe802 music-->
+        <!--0xe803 cocktail-->
+        <!-- dingbat -->
+        <!--U+2726	✦	Black four-pointed star-->
+        <!--.randStars{&#x2726;}*48-->
+
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        <div class="randStars">&#x2726;</div>
+        
+        <div id="wens">Gelukkige Verjaardag <span id = "myName">Name</span>! </div>
+        
+        <div id="google" >Allerbeste verjaardagswensen</div>
+        
+        <script>
+            var stars = document.querySelectorAll(".randStars");
+            var maxWidth = document.getElementById("container").offsetWidth;
+            var maxHeight = document.getElementById("container").offsetHeight;
+            //console.log(maxWidth + " X " + maxHeight);
+
+            for (i = 0; i < stars.length; i++) {
+
+                var pos_x = Math.random() * maxWidth;
+                var pos_y = Math.random() * maxHeight;
+                //console.log("random values: " + pos_x + " X " + pos_x);
+                stars[i].style.left = pos_x + "px";
+                stars[i].style.top = pos_y + "px";
+
+            }
+
+            /*place six  divs randomly in 6 given positions*/
+            //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+            
+            function shuffleArray(array) {
+                for (var i = array.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+            myArray = ["a","b","c","d","e","f"];
+            
+            shuffleArray(myArray);
+            //console.log(myArray);
+            
+            
+
+            var one = document.getElementById('star');
+            var two = document.getElementById('thumb');
+            var three = document.getElementById('heart');
+            var four = document.getElementById('smile');
+            var five = document.getElementById('music');
+            var six = document.getElementById('glass');
+            
+            var myDivsArray = [one,two,three,four,five,six];
+            
+            for (i=0;i<myDivsArray.length; i++){
+                
+                console.log(myDivsArray[i]); 
+                //myDivsArray[i].id = myArray[i];
+                myDivsArray[i].setAttribute("id", myArray[i]);
+                
+            }
+            
+            /*pick a name*/
+            var names = ["Evi", "Jesse", "Sam", "Bram", "Anna", "Julia", "Lotte", "Jan", "Brutus", "Victor", "Gabriel", "Maria", "Marc", "Rita"];
+            
+            var choose = Math.floor(Math.random() * names.length) + 1;
+            document.getElementById('myName').innerHTML = names[choose-1];    
+            
+        </script>
+        
+    </div>
+</body>
+
+</html>
