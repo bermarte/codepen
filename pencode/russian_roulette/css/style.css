@@ -1,0 +1,303 @@
+body {
+    background-color: #b2fdec;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+#arrow {
+    z-index: 1;
+    width: 100px;
+    height: 217px;
+    background-image: url("../img/arrow.png");
+    position: absolute;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    top: 79px;
+    left: 18px;
+    transform: rotate(128deg);
+    animation: pointIt 1s 4 linear;
+}
+.remove {
+    display: none;
+}
+#explanation{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+@keyframes pointIt {
+    0% {
+        top: 79px;
+        left: 18px;
+    }
+    50% {
+        top: 68px;
+        left: 1px;
+    }
+    100% {
+        top: 79px;
+        left: 18px;
+    }
+}
+/****/
+
+h1 {
+    font-family: 'Georgia', serif;
+}
+#container {
+    position: relative;
+    margin: 17px;
+}
+#trigger {
+    cursor: pointer;
+    color: red;
+}
+#feedBack {
+    background-color: #fce1d7;
+    width: 100px;
+    height: 20px;
+}
+#trigger {
+    z-index: 32;
+    width: 150px;
+    height: 100px;
+    background-image: url('../svg/pistol_to_shoot.svg');
+    /*background-image: url('../img/pistol_to_shoot.png');*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-shadow: none;    
+}
+#trigger_trigger {
+    width: 99px;
+    height: 66px;
+    background-image: url(../svg/trigger.svg);
+    /*background-image: url(../img/trigger.png);*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 23px;
+    top: 122px;
+    cursor: pointer;
+}
+#gun_slide {
+    width: 150px;
+    height: 100px;
+    background-image: url(../svg/gun_slide.svg
+);
+    /*background-image: url(../img/gun_slide.png
+);*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0px;
+    top: 106px;
+}
+#gun_hammer {
+    width: 40px;
+    height: 37px;
+    background-image: url(../svg/gun_hammer.svg);
+    /*background-image: url(../img/gun_hammer.png);*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -2px;
+    top: 106px;
+    /*background-color: rgba(255,0,0,0.5);*/
+}
+.slideGun {
+    animation: slideMe 1s 1 linear;
+}
+.slideHammer {
+    animation: slideMyHammer 1s 1 linear;
+}
+.shootAni {
+    animation: clickMe 0.5s 1 linear;
+}
+@keyframes clickMe {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-6px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+@keyframes slideMe {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-18px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+@keyframes slideMyHammer {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-66deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+#flag {
+    width: 29px;
+    height: 10px;
+    background-image: url(../svg/flag_1.svg);
+    /*background-image: url(../img/flag_1.png);*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 29px;
+    top: 112px;
+}
+.flagAni {
+    animation: slideFlag 0.5s 1 forwards;
+}
+@keyframes slideFlag {
+    0% {
+        transform: translateX(29px);
+        width: 49px;
+    }
+    100% {
+        transform: translateX(117px);
+        width: 269px;
+    }
+}
+#flagMsg {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    color: white;
+    width: 121px;
+    height: 0px;
+    background-color: black;
+    left: 20px;
+    top: 115px;
+    position: absolute;
+    left: 262px;
+    top: 115px;
+}
+.flagLastAni {
+    animation: slideFlagLast 0.5s 1 forwards;
+}
+@keyframes slideFlagLast {
+    0% {
+        height: 0px;
+    }
+    100% {
+        height: 88px;
+    }
+}
+#bang {
+    font-family: 'Georgia', serif;
+    opacity: 0;
+}
+#bang span {
+    font-size: 17px;
+}
+.bangAni {
+    animation: bangWrite 0.5s 1 forwards;
+}
+@keyframes bangWrite {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/*rewind*/
+
+.bangAniBack {
+    animation: bangWriteRewind 0.5s 1 forwards;
+}
+@keyframes bangWriteRewind {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/* flag reverse */
+
+.flagLastAniRewind {
+    animation: slideFlagLastRewind 0.5s 1 forwards;
+}
+@keyframes slideFlagLastRewind {
+    0% {
+        height: 88px;
+    }
+    100% {
+        height: 0px;
+    }
+}
+/**/
+
+
+@media only screen and (min-width: 600px) {
+    #container {
+        margin-left: 200px;
+    }
+    @keyframes pointIt {
+        0% {
+            top: 79px;
+            left: 200px;
+        }
+        50% {
+            top: 68px;
+            left: 183px;
+        }
+        100% {
+            top: 79px;
+            left: 200px;
+        }
+    }
+}
+@media only screen and (min-width: 900px) {
+    #container {
+        margin-left: 400px;
+    }
+    
+ @keyframes pointIt {
+        0% {
+            top: 79px;
+            left: 400px;
+        }
+        50% {
+            top: 68px;
+            left: 383px;
+        }
+        100% {
+            top: 79px;
+            left: 400px;
+        }
+    }
+}
+@media only screen and (min-width: 1200px) {
+    #container {
+        margin-left: 500px;
+    }
+    @keyframes pointIt {
+        0% {
+            top: 79px;
+            left: 500px;
+        }
+        50% {
+            top: 68px;
+            left: 483px;
+        }
+        100% {
+            top: 79px;
+            left: 500px;
+        }
+    }
+    
+}
