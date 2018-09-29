@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>De 6 Schurken</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Varela+Round:400,700" rel="stylesheet">
+</head>
+
+<body>
+   <div id="container">
+    <div id="myTitle">
+    <h1 id="title">De zes schurken</h1>
+    <p>Info: Vind eerst de schurk; als je de schurk gevonden hebt, zoek je zijn gereedschap.<br> Het spel stopt als je de zes paren vindt, je kunt maar 6 fouten maken.</p>
+    </div>
+    <!-- 3X schurken -->
+    <h1> schurken</h1>
+    <div class="gallery-villains" id="villains">
+        <div class="persoon" id="hitler" data-naam="hitler">Adolf</div>
+        <div class="persoon" id="mao" data-naam="mao">Mao</div>
+        <div class="persoon" id="leo" data-naam="leo">Leo</div>
+        <div class="persoon" id="jason" data-naam="jason">Jason</div>
+        <div class="persoon" id="stalin" data-naam="stalin">Stalin</div>
+        <div class="persoon" id="bart" data-naam="bart">Bart</div>
+    </div>
+
+    <!-- 3X vragen -->
+    <h1 id="h1gereedschappen" class="verborgen"> gereedschappen</h1>
+    <!-- 3X gereedschappen -->
+    <div class="gallery-tools" id="tools-villains">
+    <!-- hitler - gas -->
+    <div class="tool verborgen" id = "gas" data-tool="gas">
+        gas
+    </div>
+    <!-- mao - boek -->
+    <div class="tool verborgen" id = "boek" data-tool="boek">
+        boek
+    </div>
+    <!-- leopold - machete -->
+    <div class="tool verborgen" id= "kapmes" data-tool="kapmes">
+        kapmes
+    </div>
+    <!-- jason - bijl -->
+    <div class="tool verborgen" id= "bijl" data-tool="bijl">
+        bijl
+    </div>
+    <!-- satlin -  prikkeldraad -->
+    <div class="tool verborgen" id= "prikkeldraad" data-tool="prikkeldraad">
+        prikkeldraad
+    </div>
+    <!-- bart -  cola -->
+    <div class="tool verborgen" id= "cola" data-tool="cola">
+        diet-cola
+    </div>
+    </div>
+    
+
+    <!--<div id="vragen">-->
+
+    <h1 id="vraag-begin"> vraag:</h1>
+    
+    <!-- hitler - gas -->
+    <div class="vraag verborgen" id="v001">
+        <p>De naam van zijn hond was Blondie, wie is hij en welke is zijn gereedschap?</p>
+    </div>
+    
+    <!-- mao boek -->
+    <div class="vraag verborgen" id="v002">
+       <p>
+           Hij moest met veel vrouwen slapen om hem te helpen langer te leven, wie is hij en welke is zijn gereedschap?
+       </p>
+        <!--<p>Hij komt niet uit Japan, wie is hij en welke is zijn gereedschap?</p>-->
+    </div>
+    
+    <!-- leo kapmes -->
+    <div class="vraag verborgen" id="v003">
+       <p>Hij is in Wenen geboren, wie is hij en welke is zijn gereedschap?</p>
+        <!--<p>Hij heeft een baard, wie is hij en welke is zijn gereedschap?</p>-->
+    </div>
+    
+    <!-- jason bijl -->
+    <div class="vraag verborgen" id="v004">
+        <p>Hij is actief op vrijdag, wie is hij en welke is zijn gereedschap?</p>
+    </div>
+    
+    <!-- stalin prikkeldraad -->
+    <div class="vraag verborgen" id="v005">
+        <p>Zijn vrienden noemden hem de ijzeren man, wie is hij en welke is zijn gereedschap?</p>
+    </div>
+    
+    <!-- bart cola -->
+    <div class="vraag verborgen" id="v006">
+        <p><H></H>Hij studeerde geschiedenis, wie is hij en welke is zijn gereedschap?</p>
+    </div>
+
+    <!-- FEEDBACK -->
+    <div id="feedback">
+        <h1>feedback:</h1>
+        <span id="punten"></span>
+    </div>
+    </div>
+
+
+
+    <script src="./js/script.js">
+        
+    </script>
+
+</body>
+
+</html>
