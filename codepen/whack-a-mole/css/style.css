@@ -1,0 +1,140 @@
+* {
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-family:sans-serif;
+}
+body{
+    background-color: #a0d1cc;
+}
+#container{
+    border:2px solid #b5b7b4;
+    margin-top: 60px;
+    width: 960px;
+    height: 480px;
+    background-color: skyblue;
+}
+#container .block{
+    position: relative;
+    margin: 10px;
+    width: 70px;
+    height: 80px;
+    transition: all 1s;
+    top: 120px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    background-color: cadetblue;
+    cursor: pointer;
+}
+
+.red{
+    transform: scale(1.0);
+}
+.purple{
+    transform: scale(1.1);
+}
+.blue{
+    transform: scale(1.2);
+}
+.yellow{
+    transform: scale(1.3);
+}
+.green{
+    transform: scale(1.4);
+}
+.grey{
+    transform: scale(1.5);
+}
+#front{
+    width: 800px;
+    height: 228px;
+    background-color: sandybrown;
+    border-radius: 18px 18px 0px 0px ;
+    position: relative;
+    top: 52%;
+    z-index: 12;
+}
+#back{
+    width: 752px;
+    height: 200px;
+    background-color: #a5e1eb;
+    border-radius: 18px 18px 0px 0px;
+    position: relative;
+    top: -39%;
+    z-index: 0;
+}
+#moles{
+    position: relative;/* is it necessary? */
+    display: flex;
+    width:  700px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-family: sans-serif;
+}
+.animateMoles{
+   animation: moveMoles 1.5s 1;
+
+}
+#readme{
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+}
+#red{    
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 0, 0);
+}
+#purple{
+    display:inline;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(252, 103, 223);
+}
+#blue{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(68, 125, 252);
+}
+#yellow{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(232, 250, 95);
+}
+#green{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(143, 253, 177);
+}
+#grey{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(178, 175, 175);
+}
+@keyframes moveMoles {
+    0% {
+        top: 120px;
+    }
+    50% {
+        top: -50px;
+    }
+    100%{
+        top: 120px;
+    }
+}
+span{
+   display:block;
+   height: 20px;
+}
+#score{
+    width: 300px;
+    height: 40px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 30px;
+    padding: 8px;
+}

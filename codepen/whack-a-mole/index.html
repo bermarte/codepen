@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>whack a mole</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>moles</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="front"></div>
+
+        <div id="moles">
+            <div class="block" data-naam="suzy" data-getal="1"></div>
+            <div class="block" data-naam="harry" data-getal="1"></div>
+            1
+            <div class="block" data-naam="jack" data-getal="1"></div>
+            <div class="block" data-naam="jim" data-getal="1"></div>
+            <div class="block" data-naam="bill" data-getal="1"></div>
+        </div>
+        <div id="back"></div>
+    </div>
+
+    <div id="score">score:</div>
+    <span></span>
+    <div id="readme">each block gives 1 point, plus
+        <div id="red"></div>6 points
+        <div id="purple"></div>5 points
+        <div id="blue"></div>4 points
+        <div id="yellow"></div>3 points
+        <div id="green"></div>2 points
+        <div id="grey"></div>1 point
+    </div>
+
+</body>
+<script>
+    var blokken = document.querySelectorAll(".block");
+
+    console.log("there are " + blokken.length + " blocks");
+
+    var score = 0;
+    var counter = 0;
+    var counterMoles = 0;
+
+    var myScore = document.querySelector("#score");
+
+    //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
+    myArray = [0, 1, 2, 3, 4, 5];
+    myColors = ["rgb(255, 0, 0)", "rgb(252, 103, 223)", "rgb(68, 125, 252)", "rgb(232, 250, 95)", "rgb(143, 253, 177)", "rgb(178, 175, 175)"];
+
+    //play animation
+    function playAni() {
+        counterMoles = 0;
+        console.log("play");
+        //first shuffle the array
+        shuffleArray(myArray);
+        shuffleArray(myColors);
+
+        console.log("array: " + myArray);
+        console.log("array colors: " + myColors);
+
+        for (i = 0; i < blokken.length; i++) {
+            //first reset size, shadow
+
+            blokken[i].style.animationDuration = "1.5s";
+            blokken[i].classList.remove("red", "purple", "blue", "yellow", "grey", "green");
+            blokken[i].style.boxShadow = "0px 0px 0px 0px";
+
+
+            blokken[i].innerHTML = blokken[i].getAttribute("data-naam");
+            blokken[i].classList.add("animateMoles");
+            blokken[i].style.backgroundColor = myColors[i];
+            blokken[i].style.zIndex = "1";
+
+
+            //assign one random value to each block
+            blokken[i].style.animationDelay = myArray[i] + 's';
+            blokken[i].getAttribute("data-naam");
+
+            console.log("random block: " + blokken[i].getAttribute("data-naam") + " " + blokken[i].style.animationDelay);
+
+
+            switch (blokken[i].style.backgroundColor) {
+                //red
+                case "rgb(255, 0, 0)":
+                    blokken[i].classList.add("red");
+                    break;
+                    //purple
+                case "rgb(252, 103, 223)":
+                    blokken[i].classList.add("purple");
+                    blokken[i].style.animationDuration += "1.7s";
+                    break;
+                    //blue
+                case "rgb(68, 125, 252)":
+                    blokken[i].classList.add("blue");
+                    blokken[i].style.animationDuration = "1.9s";
+                    break;
+                    //yellow
+                case "rgb(232, 250, 95)":
+                    blokken[i].classList.add("yellow");
+                    blokken[i].style.animationDuration = "2.2s";
+                    break;
+                    //green
+                case "rgb(143, 253, 177)":
+                    blokken[i].classList.add("green");
+                    blokken[i].style.animationDuration = "2.4s";
+                    break;
+                    //grey
+                case "rgb(178, 175, 175)":
+                    blokken[i].classList.add("grey");
+                    blokken[i].style.animationDuration = "2.6s";
+                    break;
+            }
+
+
+            blokken[i].addEventListener("animationend", removeIt, true);
+
+            //add click and score to each div
+
+            blokken[i].addEventListener("click", countIt, true);
+
+        }
+    }
+
+    function removeIt() {
+        counterMoles++;
+        console.log("reading moles to be removed: " + counterMoles);
+        if (counterMoles == 5) {
+            console.log(" 5 moles in total to be removed");
+            for (i = 0; i < blokken.length; i++) {
+                blokken[i].classList.remove("animateMoles");
+
+
+                console.log(blokken[i].getAttribute("data-naam") + " removed");
+
+                counterMoles = 0;
+                setTimeout(function() {
+                    playAni();
+                }, 100);
+            }
+
+        }
+    }
+
+
+    playAni(); //begin animation
+
+
+    //click and count
+    function countIt(evt) {
+        console.log(evt.currentTarget);
+        var huidigeBlok = evt.currentTarget;
+        huidigeBlok.style.boxShadow = "0px 0px 0px 12px #cd4cfd";
+        score += +huidigeBlok.getAttribute("data-getal");
+
+        //read different colors
+        switch (huidigeBlok.style.backgroundColor) {
+            //red
+            case "rgb(255, 0, 0)":
+                score += 6;
+                break;
+                //purple
+            case "rgb(252, 103, 223)":
+                score += 5;
+                break;
+                //blue
+            case "rgb(68, 125, 252)":
+                score += 4;
+                break;
+                //yellow
+            case "rgb(232, 250, 95)":
+                score += 3;
+                break;
+                //green
+            case "rgb(143, 253, 177)":
+                score += 2;
+                break;
+                //grey
+            case "rgb(178, 175, 175)":
+                score += 1;
+                break;
+        }
+
+        console.log(score);
+
+        myScore.innerHTML = "score: " + parseInt(score);
+
+    }
+</script>
+
+</html>
+  
+  
+
+</body>
+
+</html>
