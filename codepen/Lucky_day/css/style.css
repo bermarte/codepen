@@ -1,0 +1,90 @@
+*{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+#container{
+    background-color: #cbcaca;
+    width: 80%;
+    height: 70%;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#square_1,#square_4{
+    background-color: #e37575;
+    text-align: center;
+}
+#square_2,#square_3{
+    background-color: grey;
+    text-align: center;
+}
+
+#square_1{
+    background-image: url("../img/skull.svg");
+    background-size:contain;
+    background-position:center;
+    background-repeat: no-repeat;
+}
+#square_2{
+    background-image: url("../img/love.svg");
+    background-size:contain;
+    background-position:center;
+    background-repeat: no-repeat;
+}
+#square_3{
+    background-image: url("../img/money.svg");
+    background-size:contain;
+    background-position:center;
+    background-repeat: no-repeat;
+}
+#square_4{
+    background-image: url("../img/ball.svg");
+    background-size:contain;
+    background-position:center;
+    background-repeat: no-repeat;
+}
+
+.squareGreen{
+    background-color: #69f007;
+}
+.square{
+    width: 50%;
+    height: 50%;
+}
+#myTitle, #Go{
+  height: 12%;
+  text-align: center;
+  padding-top: 10px;
+}
+#myTitle{
+  background-color: white;
+}
+#Go{
+    background-color: #a6dfe2;
+    cursor: pointer;
+}
+.myText{
+    font-size: 22px;
+    font-family: monospace;
+}
+#Go:hover{
+    background-color: #34fa1a;
+    color:#037447;
+    
+}
+#spinner{
+    width: 17%;
+    height: 25%;
+    position: absolute;
+    top: 32vh;
+    left: 42vw;
+    display: flex;
+    align-items: center;
+    background-image: url("../img/runner.png");
+    background-size:contain;
+    background-position:center;
+    background-repeat: no-repeat;
+    transition: 300ms all ease-out;
+}
