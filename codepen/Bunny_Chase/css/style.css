@@ -1,0 +1,71 @@
+*{
+    padding: 0;
+    margin: 0 auto;
+    
+}
+@font-face {
+    font-family: 'Impact';
+    src: url('Impact.woff2') format('woff2'),
+        url('Impact.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Georgia-Italic';
+    src: url('Georgia-Italic.woff2') format('woff2'),
+        url('Georgia-Italic.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+body{
+    background-color: #bdf8c2;
+    cursor:crosshair;
+}
+#container{
+    width: 100vw;
+    height: 100vh;
+}
+#bunny_stage{
+    width: 80vw;
+    height: 100vh;
+    background-color: #b4eab8;
+    /*position: relative;*/
+    
+}
+#bunny{
+    width: 79px;
+    height: 64px;
+    background-color: #d6a934;
+    text-align: center;
+    padding-right:8px;
+    padding-bottom:8px;
+    padding-top:8px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: 300ms all ease-out;
+}
+h1{
+    padding-top: 60px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Impact';
+    font-size: 196px;
+    font-style: normal;
+    line-height: 90%;
+    letter-spacing: 5px;
+    color: #9bd49d;
+}
+#catch{
+    font-family: 'Georgia-Italic';
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 18px;
+    padding-top: 60px;
+    color: #7aac7c;
+}
+/*
+font background 9bd49d
+bunny body d6a934
+bunny text 803900
+*/
