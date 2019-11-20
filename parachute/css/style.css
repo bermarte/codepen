@@ -1,0 +1,18 @@
+body{
+    background-color: #d4cdcd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#mijn_canvas{
+    background-color: black;
+    border: 1px solid #000;
+}
+#container{
+    background-color: darkgrey;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
