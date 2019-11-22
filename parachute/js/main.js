@@ -10,9 +10,15 @@ function canvas() {
     let count = 0;
     //score
     let total = 0;
+    let failuresTotal = 0;
+    let winning = false;
+    let loosing = false;
+
     //landing point
     let sizeOfBase = 120;
-    let winning = false;
+    //calculating speed of point of landing
+    let mouseSpeedFactor = 1;
+    let landingX = c.width/2 - sizeOfBase/2;
     //parachute's data
     const height_parachute = 88;
     //distance between the two parts of the parachute
@@ -30,18 +36,17 @@ function canvas() {
     //the speed is increasing until the maximum is reached then starts from 1 again
     const numberOfRepetitions = 15;
 
-
     //detect movement of the mouse
     c.addEventListener('mousemove', mouseMove, false);
     function mouseMove(evt) {
 
         mxPos = evt.clientX - c.offsetLeft;//500; //c.offsetLeft;
-        myPos = evt.clientY - c.offsetTop;
+
+        //myPos = evt.clientY - c.offsetTop;
         //console.log('xPos = ' + mxPos);
         //console.log('yPos = ' + myPos);
 
     }
-
     //score
     function score(txt) {
 
@@ -51,6 +56,15 @@ function canvas() {
         ctx.fillText(txt, 10, 25);
 
     }
+    function scoreFailures(txt) {
+
+        ctx.beginPath();
+        ctx.font = "18px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText(txt, c.width/2+10, 25);
+
+    }
+
     //part of the parachute
     function circle(x, y, r, s) {
 
@@ -97,11 +111,14 @@ function canvas() {
             if (count == numberOfRepetitions)count = 0;
 
          }
+
         circle(xNum, speed, 30, 0);
         half_circle(xNum, speed - distanceBetween, 45, 0);
 
 
         speed +=count;
+        //increase the point of landing speed
+        mouseSpeedFactor =count;
         if (speed >= c.height+height_parachute){
             speed = 0;
             checkTotal();
@@ -109,7 +126,7 @@ function canvas() {
 
     }
     //left and right bounds of the landing point
-    function moveSquare() {
+    function moveSquareBounds() {
 
         if (mxPos <= 0) {
             mxPos = 0;
@@ -118,7 +135,6 @@ function canvas() {
         if (mxPos >= c.width - sizeOfBase) {
             mxPos = c.width - sizeOfBase;
         }
-        
 
     }
 
@@ -131,8 +147,13 @@ function canvas() {
     //move the landing point on the bottom
     function MovingBase(){
 
-        moveSquare();
-        ctx.rect(mxPos, c.height - 10, sizeOfBase, 10);
+        moveSquareBounds();
+        //slow down the landing point's movement
+        if(mxPos < landingX) landingX -= mouseSpeedFactor;
+
+        if(mxPos > landingX ) landingX += mouseSpeedFactor;
+
+        ctx.rect(landingX, c.height - 10, sizeOfBase, 10);
         ctx.fill();
 
     }
@@ -156,15 +177,21 @@ function canvas() {
                !(fixedMxPos >= (xNum+permission))) {
 
               winning = true;
+
           }
           else{
+
               winning = false;
+              loosing = true;
+
           }
       }
     }
     //increase total
     function checkTotal(){
         if (winning)total++;
+        else failuresTotal++;
+
     }
     function game() {
 
@@ -179,6 +206,7 @@ function canvas() {
         parachute();
 
         score('score = ' + total);
+        scoreFailures('fails = ' + failuresTotal);
         Touch();
 
     }
