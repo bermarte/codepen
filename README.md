@@ -10,3 +10,4 @@ Demos made with HTML/JS/CSS<br>
 <a href="http://bermarte.github.io/codepen/Verjaardagskaart/" target="_blank"> Verjaardagskaart</a><br>
 <a href="http://bermarte.github.io/codepen/sass/" target="_blank"> sass</a><br>
 <a href="http://bermarte.github.io/codepen/parachute/" target="_blank"> parachute</a><br>
+<a href="http://bermarte.github.io/codepen/mixamo-thriller/" target="_blank"> mixamo thriller</a><br>
