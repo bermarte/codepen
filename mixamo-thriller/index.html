@@ -3,12 +3,19 @@
   <head>
     <title>glTF Model - A-Frame School</title>
     <meta name="description" content="glTF Model - A-Frame School">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/thomaspark/bootswatch/gh-pages/slate/bootstrap.min.css" />
+  
+  <!-- Bootstrap JS Dependencies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+     <script src="https://cdn.rawgit.com/gladeye/aframe-preloader-component/1.0.2/dist/aframe-preloader-component.min.js"></script>
 
   </head>
   <body>
-   <a-scene 
+   <a-scene preloader
    background="color: #314b4b;"
    renderer="antialias: true;
                    colorManagement: true;
@@ -17,16 +24,16 @@
   
 
   <!-- Using the asset management system. -->
-  <a-gltf-model src="#new_scene"></a-gltf-model>
+
   <a-entity light="type: directional; castShadow:true; color: #FFF; intensity: 0.6" position="0. 0 1" animation="property: position; to: 0.3 1.6 0; dur: 24500; easing: linear"></a-entity>
 
   <!-- Defining the URL inline. Not recommended but more comfortable for web developers. -->
   <a-gltf-model 
       
-  src="assets/new_scene.gltf"
+  src="assets/scene.gltf"
   position="0 0 -5"
   animation-mixer="loop:repeat"
-     shadow="receive: true">
+     shadow="receive: true" preload="true">
       
   </a-gltf-model>
 </a-scene>
