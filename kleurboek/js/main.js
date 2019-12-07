@@ -3,7 +3,7 @@ window.addEventListener("load", () => {
     const ctx = c.getContext('2d');
 
 
-    //variabelen
+    //constanten en variabelen
     const size = 30;
     const line = 3;
     let posX = line - 2;
@@ -13,6 +13,18 @@ window.addEventListener("load", () => {
     let canPaint = false;
     const colors = ['#FCF314', '#7EED15', '#3E7A00', '#4DAFAE', '#2D5AFE', '#763FA4', '#C068FE', '#CF53AE', '#EC4400', '#EC4409', '#F17C08', '#F8B202'];
     let curr_color = [];
+    
+    //events
+    c.addEventListener("mousedown", neer);
+    c.addEventListener("mouseup", niet_neer);
+    c.addEventListener("mousemove", kleuren);
+    
+    //https://www.geeksforgeeks.org/how-to-get-the-coordinates-of-a-mouse-click-on-a-canvas-element/
+    
+    c.addEventListener("mousedown", function (e) {
+        getMousePosition(c, e);
+    });
+    
 
     //functie voor muispositie
     function muispositie(e) {
@@ -28,7 +40,6 @@ window.addEventListener("load", () => {
         console.log(paint);
     }
 
-
     function niet_neer(evt) {
         //bool op false zetten
         paint = false;
@@ -41,13 +52,6 @@ window.addEventListener("load", () => {
         return curr_color;
 
     }
-    c.addEventListener("mousedown", neer);
-    c.addEventListener("mouseup", niet_neer);
-    c.addEventListener("mousemove", kleuren);
-    //https://www.geeksforgeeks.org/how-to-get-the-coordinates-of-a-mouse-click-on-a-canvas-element/
-    c.addEventListener("mousedown", function (e) {
-        getMousePosition(c, e);
-    });
 
     function getMousePosition(c, event) {
         
@@ -56,14 +60,16 @@ window.addEventListener("load", () => {
         let y = event.clientY - rect.top;
         console.log("Coordinate x: " + x,
             "Coordinate y: " + y);
-
-        //detect clicks and choose colors
+        
+        // functie kiezen kleur bij klik
+        // vergelijkingen om te controleren op welke kleur-vierkant geklikt wordt.
+        // detect clicks and choose colors
+        
         if (x > 0 && x < blocks_pos[0] && y < size) {
             console.log("yellow");
             curr_color[0] = colors[0];
             canPaint = true;
-        }
-        if (x > blocks_pos[0] && x < blocks_pos[1] && y < size) {
+        }else if (x > blocks_pos[0] && x < blocks_pos[1] && y < size) {
             console.log("yellow-green");
             curr_color[0] = colors[1];
             canPaint = true;
@@ -110,24 +116,21 @@ window.addEventListener("load", () => {
 
     }
 
-    // functie kiezen kleur bij klik
-    function kies_kleur(evt) {
-        //vergelijkingen om te controleren op welke kleur-vierkant geklikt wordt.
-
-    }
-
     //rechthoeken voor de kleur tekenen.
     function teken_rechthoek(x, y, w, h, kleur) {
+        
         //flexibele herbruikbare functie om kleur-vierkanten te tekenen
+        
         ctx.fillStyle = kleur;
         ctx.lineWidth = line;
         ctx.strokeRect(x, y, w, h);
         ctx.fillRect(x, y, w, h);
 
     }
-    //selectColor(e);
+    
     //functie om te kleuren
     function kleuren(e) {
+        
         //lijnen trekken. Deze zijn afhankelijk van de x en y van de muis.
 
         if (!paint) return;
@@ -135,13 +138,19 @@ window.addEventListener("load", () => {
 
         ctx.lineWidth = lWidth;
         ctx.lineCap = 'round';
-        ctx.lineTo(xPos, yPos);
+        
+        let rect = c.getBoundingClientRect();
+        let x = event.clientX - rect.left;
+        let y = event.clientY - rect.top;
+        
+        ctx.lineTo(x,y);
         ctx.strokeStyle = selectColor(e);
         //ctx.globalCompositeOperation = 'destination-over';
         //ctx.globalCompositeOperation = "source-over";
         ctx.stroke();
         ctx.beginPath();
-        ctx.moveTo(xPos, yPos);
+        ctx.moveTo(x, y);
+        
     }
     
     /*
