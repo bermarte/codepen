@@ -1,0 +1,66 @@
+*{
+    
+    background-color: #facfcf;
+}
+#container {
+    position: relative;
+}
+.canvas {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    border: 1px solid black;
+    /*
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    */
+}
+#canvas_top{
+    background: url(../img/back.svg) no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    background-size: 90%;
+    background-position: 50% 85%;
+    z-index: 2;
+    /* pass click event on the background layer */
+    pointer-events:none;
+}
+#mijn_canvas{
+    background-color: transparent;
+    z-index: 1;  
+}
+/*
+#bg{
+    background: url(../img/back.svg) no-repeat;
+    width: 650px;
+    height: 400px;
+    position: absolute;
+    top: 200px;
+    left: 20%;
+    background-color: white;
+    z-index: 1;
+    
+}
+#mijn_canvas{
+    border: 1px solid black;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background-color: transparent;
+    background-size: contain;
+    background-size: 90%;
+    background-position: 50% 85%;
+    z-index: 2;
+    
+}
+*/
+h1{
+    font-family: 'Solway', serif;
+    background-color: #fd9a9a;
+    text-align: center;
+}
