@@ -8,6 +8,7 @@ Demos made with HTML/JS/CSS<br>
 <a href="http://bermarte.github.io/codepen/Table-tiger/" target="_blank"> Table-tiger</a><br>
 <a href="http://bermarte.github.io/codepen/Town/" target="_blank"> Town</a><br>
 <a href="http://bermarte.github.io/codepen/Verjaardagskaart/" target="_blank"> Verjaardagskaart</a><br>
-<a href="http://bermarte.github.io/codepen/sass/" target="_blank"> sass</a><br>
-<a href="http://bermarte.github.io/codepen/parachute/" target="_blank"> parachute</a><br>
-<a href="http://bermarte.github.io/codepen/mixamo-thriller/" target="_blank"> mixamo thriller</a><br>
+<a href="http://bermarte.github.io/codepen/sass/" target="_blank"> Sass</a><br>
+<a href="http://bermarte.github.io/codepen/parachute/" target="_blank"> Parachute</a><br>
+<a href="http://bermarte.github.io/codepen/mixamo-thriller/" target="_blank"> Mixamo thriller</a><br>
+<a href="http://bermarte.github.io/codepen/kleurboek/" target="_blank"> Coloring book</a><br>
