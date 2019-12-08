@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
     let paint = false;
     let lWidth = 10;
     let canPaint = false;
-    const colors = ['#FCF314', '#7EED15', '#3E7A00', '#4DAFAE', '#2D5AFE', '#763FA4', '#C068FE', '#CF53AE', '#EC4400', '#EC4409', '#F17C08', '#F8B202'];
+    const colors = ['#FCF314', '#7EED15', '#3E7A00', '#4DAFAE', '#2D5AFE', '#763FA4', '#C068FE', '#CF53AE', '#EC4400', '#EC4409', '#F17C08', '#F8B202', '#FFFFFF'];
     let curr_color = [];
     
     //events
@@ -118,7 +118,12 @@ window.addEventListener("load", () => {
             console.log("yellow-orange");
             curr_color[0] = colors[11];
             canPaint = true;
+        }else if (x > blocks_pos[11] && x < blocks_pos[12] && y < size) {
+            console.log("white");
+            curr_color[0] = colors[12];
+            canPaint = true;
         }
+        
 
     }
 
