@@ -1,6 +1,10 @@
 window.addEventListener("load", () => {
     const c = document.getElementById('mijn_canvas');
     const ctx = c.getContext('2d');
+    
+    //canvas_top
+    const ct = document.getElementById('canvas_top');
+    const ctxt = ct.getContext('2d');
 
 
     //constanten en variabelen
@@ -16,13 +20,14 @@ window.addEventListener("load", () => {
     
     //events
     c.addEventListener("mousedown", neer);
+     c.addEventListener("mousedown", kleuren);
     c.addEventListener("mouseup", niet_neer);
     c.addEventListener("mousemove", kleuren);
     
     //https://www.geeksforgeeks.org/how-to-get-the-coordinates-of-a-mouse-click-on-a-canvas-element/
     
     c.addEventListener("mousedown", function (e) {
-        getMousePosition(c, e);
+        getMousePosition(c, e);     
     });
     
 
@@ -38,6 +43,7 @@ window.addEventListener("load", () => {
         //bool op true zetten
         if (canPaint) paint = true;
         console.log(paint);
+        
     }
 
     function niet_neer(evt) {
@@ -121,10 +127,10 @@ window.addEventListener("load", () => {
         
         //flexibele herbruikbare functie om kleur-vierkanten te tekenen
         
-        ctx.fillStyle = kleur;
-        ctx.lineWidth = line;
-        ctx.strokeRect(x, y, w, h);
-        ctx.fillRect(x, y, w, h);
+        ctxt.fillStyle = kleur;
+        ctxt.lineWidth = line;
+        ctxt.strokeRect(x, y, w, h);
+        ctxt.fillRect(x, y, w, h);
 
     }
     
