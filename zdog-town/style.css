@@ -1,0 +1,11 @@
+html, body, div, canvas {
+    margin: 0;
+    padding: 0;
+}
+.zdog-canvas {
+  background: #FDB;
+  cursor: move;
+}
+body{
+  background: #FDB;
+}
