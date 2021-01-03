@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>JS-quiz</title>
+
+  <style>
+    .main {
+      background-color: #e3eee1;
+      padding: 40px;
+    }
+
+    .scrollable {
+      height: auto;
+      max-height: 80vh;
+      overflow: auto;
+    }
+
+    .aTag {
+      text-decoration: none;
+    }
+
+    .liTag {
+      list-style-type: none;
+    }
+
+    label {
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    label:hover {
+      background-color: rgba(212, 212, 212, 0.8);
+      opacity: 0.7;
+      cursor: pointer;
+    }
+
+    .carousel-control-next {
+      margin-right: 100px;
+      margin-top: 300px;
+      min-width: 44px;
+      position: absolute;
+      height: 8%;
+      width: 10% !important;
+      background-color: #529547;
+      border: 1px solid #385034;
+      box-shadow: 7px 5px 7px 5px rgba(0, 0, 0, 0.25);
+      border-radius: 15px 5px;
+    }
+
+    .carousel-control-next:hover {
+      cursor: pointer;
+    }
+
+    hr.ruler {
+      border: 4px solid rgb(148, 147, 147, 0.5);
+      border-radius: 5px;
+    }
+    .results{
+      padding: 20px;
+    }
+    .results li{
+      padding: 6px;
+    }
+
+    span.user-answers-green {
+      background-color: rgba(144, 231, 178, 0.8);
+      border-radius: 5px;
+      padding: 4px;
+    }
+
+    span.user-answers-red {
+      background-color: rgba(221, 121, 112, 0.8);
+      border-radius: 5px;
+      padding: 4px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+<body class="main">
+  <h2>Your Score: <span id="score">0</span></h2>
+  <div class="num"></div>
+  <hr class='ruler'>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="carousel-inner"></div>
+  </div>
+  <div id="buttonContainer">
+    <button class="carousel-control-next" href="#carouselExampleControls" data-slide="next">
+      Next
+    </button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+  <!-- initialize your application -->
+  <script>
+    //state
+    const quizData = {
+     
+      // the questions in the quiz
+      questions: [{
+        text: '1.Which built-in method returns a string converted to lowercase?',
+        answers: {
+          a: 'toLowerCase()',
+          b: 'toLower()',
+          c: 'changeCase(case)',
+          d: 'None of the above.',
+        },
+        correct: 'a',
+        selected: null,
+        links: [{
+            text: 'Lower Case',
+            href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase',
+          },
+          {
+            text: 'Lower Case',
+            href: 'https://www.w3schools.com/jsref/jsref_tolowercase.asp',
+          },
+        ],
+      }, {
+        text: '2.Which of the following functions of the Array object adds one or more elements to the end of an array and returns the new length of the array?',
+        answers: {
+          a: 'pop()',
+          b: 'push()',
+          c: 'join()',
+          d: 'map()',
+        },
+        correct: 'b',
+        selected: null,
+        links: [{
+            text: 'add elements',
+            href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push',
+          },
+          {
+            text: 'add elements',
+            href: 'https://www.w3schools.com/jsref/jsref_push.asp',
+          },
+        ],
+      }, {
+        text: '3.Which of these is not a comparison operator? ',
+        answers: {
+          a: '&lt;',
+          b: '&gt;',
+          c: '==',
+          d: '=&gt;',
+        },
+        correct: 'd',
+        selected: null,
+        links: [{
+            text: 'comparison operators',
+            href: 'https://www.w3schools.com/js/js_comparisons.asp',
+          },
+          {
+            text: 'comparison operators',
+            href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators',
+          },
+        ],
+      }, {
+        text: '4.How many parameters can be passed to a function?',
+        answers: {
+          a: '2',
+          b: 'none',
+          c: 'as much as u want',
+          d: '1',
+        },
+        correct: 'c',
+        selected: null,
+        links: [{
+            text: 'parameter rules',
+            href: 'https://www.w3schools.com/js/js_function_parameters.asp',
+          },
+          {
+            text: 'functions',
+            href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions',
+          },
+        ],
+      }, {
+        text: '5.Which HTML element do we use to wrap JavaScript\'s code?',
+        answers: {
+          a: '&lt;js&gt;',
+          b: '&lt;javaScript&gt;',
+          c: '&lt;script&gt;',
+          d: '&lt;body&gt;',
+        },
+        correct: 'c',
+        selected: null,
+        links: [{
+            text: 'tags',
+            href: 'https://www.w3schools.com/tags/tag_script.asp',
+          },
+          {
+            text: 'tags',
+            href: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script',
+          },
+        ],
+      }, {
+        text: '6.How do you write "Hello World" in an alert box?',
+        answers: {
+          a: 'msg("Hello World")',
+          b: 'prompt("Hello world")',
+          c: 'message("hello World")',
+          d: 'alert("Hello World")',
+        },
+        correct: 'd',
+        selected: null,
+        links: [{
+            text: 'alert box msg',
+            href: 'https://www.w3schools.com/jsref/met_win_alert.asp',
+          },
+          {
+            text: 'alert box msg',
+            href: 'https://developer.mozilla.org/en-US/docs/Web/API/Window/alert',
+          },
+        ],
+      }, {
+        text: '7.How do you call a function named "myFunction"?',
+        answers: {
+          a: 'myFunction()',
+          b: 'function.myFunction',
+          c: 'let function',
+          d: 'const function',
+        },
+        correct: 'a',
+        selected: null,
+        links: [{
+            text: 'call function',
+            href: 'https://www.w3schools.com/js/js_function_call.asp',
+          },
+          {
+            text: 'call function',
+            href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions',
+          },
+        ],
+      }, {
+        text: '8.How to write an IF statement in JavaScript?',
+        answers: {
+          a: 'if else (a === b)',
+          b: 'if a(===b)',
+          c: 'else if (a)==b',
+          d: 'if (a === b)',
+        },
+        correct: 'd',
+        selected: null,
+        links: [{
+            text: 'if statement',
+            href: 'https://www.w3schools.com/js/js_if_else.asp',
+          },
+          {
+            text: 'if else',
+            href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else',
+          },
+        ],
+      }, {
+        text: '9.How does a FOR loop start?',
+        answers: {
+          a: 'for (const i = 0; i &lt; 5; i++)',
+          b: 'for (let i = 0; i &lt; 5; i++)',
+          c: 'for const (i = 0; i &lt; 5; i++)',
+          d: 'for let (i = 0; i &lt; 5; i++)',
+        },
+        correct: 'b',
+        selected: null,
+        links: [{
+            text: 'for loop',
+            href: 'https://www.w3schools.com/js/js_loop_for.asp',
+          },
+          {
+            text: 'for loop',
+            href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration',
+          },
+        ],
+      }, {
+        text: '10.Which event occurs when the user clicks on an HTML element?',
+        answers: {
+          a: 'hover',
+          b: 'button',
+          c: 'onclick',
+          d: 'onchange',
+        },
+        correct: 'c',
+        selected: null,
+        links: [{
+            text: 'click event',
+            href: 'https://www.w3schools.com/jsref/event_onclick.asp',
+          },
+          {
+            text: 'events in js',
+            href: 'https://www.w3schools.com/js/js_events.asp',
+          },
+        ],
+      }, ],
+    };
+
+
+    // correct answers all in one array
+    const correctAnswers = [];
+    for (let question of quizData.questions) {
+      correctAnswers.push(question.answers[question.correct]);
+    }
+
+    //answers of the user
+    const userAnswers = [];
+
+    const divEl = document.querySelectorAll('.carousel-inner')[0];
+
+    for (let quiz of quizData.questions) {
+      //console.log(quizData.questions);
+      
+      //console.log(divEl);
+      const divEl2 = document.createElement('div');
+      divEl2.classList.add("carousel-item");
+      divEl.appendChild(divEl2);
+
+      const h3El = document.createElement('h3');
+      h3El.innerHTML = quiz.text;
+      divEl2.appendChild(h3El);
+
+      const olEl = document.createElement('ol');
+      divEl2.appendChild(olEl);
+
+      for (let answer of Object.values(quiz.answers)) {
+
+        let number = Math.floor((Math.random() * 5000) + 1);
+        const radioButton = document.createElement('input');
+        radioButton.setAttribute("type", "radio");
+        radioButton.setAttribute("id", `radioQuestion_${number}`);
+        radioButton.setAttribute("name", Object.values(quiz.answers)[0]);
+        const radioButtonText = document.createElement('label');
+        radioButtonText.setAttribute("for", `radioQuestion_${number}`);
+        radioButtonText.innerHTML = answer;
+        const whiteSpace = document.createElement('br');
+        olEl.appendChild(radioButton);
+        olEl.appendChild(radioButtonText);
+        olEl.appendChild(whiteSpace);
+
+      }
+
+      const ulEl = document.createElement('ul');
+      divEl2.appendChild(ulEl);
+
+
+      for (let link of quiz.links) {
+        const liEl = document.createElement('li');
+        liEl.classList.add("liTag");
+        ulEl.appendChild(liEl);
+        const a = document.createElement('a');
+        a.innerHTML = link.text;
+        a.href = link.href;
+        a.classList.add("aTag");
+        liEl.appendChild(a);
+      }
+    }
+
+    // adding active class to the first children
+
+    var menuItem = document.getElementsByClassName('carousel-inner')[0];
+    //console.log(menuItem.firstElementChild);
+    menuItem.firstElementChild.classList.add('active');
+
+    /*
+    checkitem function: when the user has arrived at the last carousel,
+    the next-button of the carousel disappears
+    */
+
+    function checkitem() {
+      const carouselLength = $('.carousel-item').length; // -1
+
+      // if there is more than one item
+      if (carouselLength) {
+        $('.carousel-control-next').removeClass('d-none');
+      }
+
+      $('.carousel').carousel({
+        interval: false,
+        wrap: false
+      }).on('slide.bs.carousel', function (e) {
+        // first one
+        if (e.to == 0) {
+          $('.carousel-control-next').removeClass('d-none');
+        }
+        // last one
+        else if (e.to == carouselLength - 1) {
+
+          /*
+          last question: remove the button and add a new one,
+          that will show the final results when triggered
+          */
+          $('.carousel-control-next').remove();
+
+          const lastQuestion = document.createElement("button");
+          const text = document.createTextNode("End Quiz");
+          lastQuestion.appendChild(text);
+          lastQuestion.classList.add("carousel-control-next");
+          const btnContainer = document.getElementById("buttonContainer");
+          btnContainer.appendChild(lastQuestion);
+          /*
+          we create an id to select it
+          and we add an event listener to it
+          */
+          lastQuestion.id = 'endQuiz';
+          lastQuestionSetter(lastQuestion.id);
+
+        }
+        // the rest
+        else {
+          $('.carousel-control-next').removeClass('d-none');
+        }
+      });
+    }
+
+    checkitem();
+
+    /*
+    end quiz: you need this setter to avoid an error
+    coming from endQuizBtn not being defined
+    */
+    const lastQuestionSetter = (id) => {
+      const lastQuestionBtn = document.getElementById(id);
+      lastQuestionBtn.addEventListener('click', lastQuestion);
+      lastQuestionBtn.addEventListener('click', checkScore);
+    }
+
+    const lastQuestion = () => {
+
+      //remove last button
+      $('#endQuiz').remove();
+      /*
+      here there's a repetition, so we
+      will refactor it later
+      by wrapping it in a function
+      */
+
+      const reviewQuiz = document.createElement("button");
+      const text = document.createTextNode("Review quiz");
+      reviewQuiz.appendChild(text);
+      reviewQuiz.classList.add("carousel-control-next");
+      const btnContainer = document.getElementById("buttonContainer");
+      btnContainer.appendChild(reviewQuiz);
+      reviewQuiz.id = 'reviewQuiz';
+      //calling the function to view all the results
+      reviewQuizSetter(reviewQuiz.id);
+    }
+
+    const reviewQuizSetter = (id) => {
+      const endQuizBtn = document.getElementById(id);
+      endQuizBtn.addEventListener('click', showResults);
+    }
+    //https://plainjs.com/javascript/manipulation/insert-an-element-after-or-before-another-32/
+    function insertAfter(el, referenceNode) {
+	    referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+	  }
+    //quiz is done
+    function showResults() {
+      console.log('how many answers ' + userAnswers.length);
+      console.log('answers:' + JSON.stringify(userAnswers));
+    
+      //remove UI
+      $('#carouselExampleControls').remove();
+      const ruler = document.querySelectorAll('.ruler')[0];
+      const ulEl = document.createElement('ul');
+      ulEl.classList.add("results");
+      insertAfter(ulEl, ruler);
+
+      //fill in the answers in the review
+      for (let item in correctAnswers){
+        const liEl = document.createElement('li');
+        liEl.innerHTML = `${Number(item)+1}: ${correctAnswers[item]}`;
+        ulEl.appendChild(liEl);
+      }
+
+      //fill the answers given by the user
+      for (let answer of userAnswers){
+        const answered = document.querySelectorAll("ul.results li")[answer.num-1];
+        let output;
+        let wrongAnswer;
+        answer.correct===1?output='<span class="user-answers-green">correct answer<?span>':output='<span class="user-answers-red">wrong answer</span>';
+        answer.correct===0?wrongAnswer=` <span class="user-answers-red">${answer.select}</span>`:wrongAnswer='';
+        answered.innerHTML += `  ${output}${wrongAnswer}` ;
+      }
+
+      $('#reviewQuiz').remove();
+
+    }
+
+    /*
+    the carouselCounter function shows which carousel is active,
+    the current number of the carousel and the total number of carousels
+    */
+
+    let totalItems = $('.carousel-item').length;
+    let currentIndex = $('div.active').index() + 1;
+    $('.num').html('' + currentIndex + '/' + totalItems + '');
+
+    $('#carouselExampleControls').on('slid.bs.carousel', function () {
+      currentIndex = $('div.active').index() + 1;
+      $('.num').html('' + currentIndex + '/' + totalItems + '');
+    });
+
+
+    let btnNext = document.querySelector('.carousel-control-next');
+
+
+    btnNext.addEventListener('click', checkScore);
+
+    function checkScore(e) {
+      const currentQuestion = document.querySelector('.num');
+      const allInputs = document.querySelectorAll('.active ol input');
+      const allLabels = document.querySelectorAll('.active ol label');
+
+      for (let i = 0; i < allInputs.length; i++) {
+        let score = document.getElementById('score');
+
+        if (allInputs[i].checked) {
+          //allLabels[i].innerHTML is the text of the answer selected
+          const selected = allLabels[i].innerHTML;
+
+          const tmp = currentQuestion.innerHTML.split("/");
+          const currNum = tmp[0];
+          const expected = correctAnswers[currNum - 1];
+          let res;
+          if (selected === expected) {
+            score.innerHTML = Number(score.innerHTML) + 1;
+            res = 1;
+          } else {
+            res = 0;
+          }
+          //push the result in the array of the answers
+          //not used
+          userAnswers.push({
+            num: currNum,
+            text: expected,
+            correct: res,
+            select: selected
+          });
+
+          console.log('question answered');
+          console.log(JSON.stringify(userAnswers));
+        }
+      }
+    };
+  </script>
+</body>
+
+</html>

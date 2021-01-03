@@ -13,3 +13,4 @@ Demos made with HTML/JS/CSS<br>
 <a href="http://bermarte.github.io/codepen/parachute/" target="_blank"> Parachute</a><br>
 <a href="http://bermarte.github.io/codepen/mixamo-thriller/" target="_blank"> Mixamo thriller</a><br>
 <a href="http://bermarte.github.io/codepen/kleurboek/" target="_blank"> Coloring book</a><br>
+<a href="http://bermarte.github.io/codepen/js-quiz/" target="_blank"> JS-quiz</a><br>
