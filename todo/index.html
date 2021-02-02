@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <title>ToDoList</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" > -->
+  <link rel="stylesheet" href="flexboxgrid.css">
+  <!-- bootswatch theme -->
+  <link rel="stylesheet" href="bootstrap.css">
+ 
+</head>
+
+<body>
+  <!--Main page-->
+  <section id="page" class="todo-form">
+    <div class="container">
+      <div class="row center-xs center-sm center-md center-lg">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <h2>
+            <span class="primary-text">My </span><span class="secondary-text">ToDo List</span>
+          </h2>
+          <div class="form-parent">
+            <form id="todo-form">
+              <div>
+                <label for="title">Todo Title</label><br />
+                <input type="text" id="title" maxlength="60" />
+              </div>
+              <div>
+                <label for="description">Todo Description</label><br />
+                <input type="text" id="description" maxlength="60" />
+              </div>
+              <button type="submit" name="button">Add</button>
+            </form>
+          </div>
+          <div class="row center-xs center-sm center-md center-lg">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <table class="todoitems">
+                <thead>
+                  <tr>
+                    <th>Title </th>
+                    <th>Description</th>
+                    <th class='float-right'><span class='btn-badge badge badge-dark' id='deleteAll'>Delete All</span></th>
+                    <th class='float-right'><span class='btn-badge badge badge-dark' id='save'>Save</span></th>
+                  </tr>
+                </thead>
+                <tbody id="todo-list">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- initialize your application -->
+  <script src="script.js"></script>
+</body>
+
+</html>

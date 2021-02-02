@@ -1,0 +1,32 @@
+%body
+  / Main page
+  %section#page.todo-form
+    .container
+      .row.center-xs.center-sm.center-md.center-lg
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12
+          %h2
+            %span.primary-text My
+            %span.secondary-text ToDo List
+          .form-parent
+            %form#todo-form
+              %div
+                %label{:for => "title"} Todo Title
+                %br/
+                %input#title{:maxlength => "60", :type => "text"}/
+              %div
+                %label{:for => "description"} Todo Description
+                %br/
+                %input#description{:maxlength => "60", :type => "text"}/
+              %button{:name => "button", :type => "submit"} Add
+          .row.center-xs.center-sm.center-md.center-lg
+            .col-xs-12.col-sm-12.col-md-12.col-lg-12
+              %table.todoitems
+                %thead
+                  %tr
+                    %th Title
+                    %th Description
+                    %th.float-right
+                      %span#deleteAll.btn-badge.badge.badge-dark Delete All
+                    %th.float-right
+                      %span#save.btn-badge.badge.badge-dark Save
+                %tbody#todo-list
