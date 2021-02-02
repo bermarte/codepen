@@ -32,7 +32,7 @@ class Todo {
         tdDescription.appendChild(txtDes);
         tr.appendChild(tdDescription);
         const closeBtn = document.createElement('a');
-        closeBtn.classList.add('btn', 'btn-danger', 'btn-sm', 'delete', 'end');
+        closeBtn.classList.add('btn', 'btn-danger', 'btn-sm', 'delete', 'end', 'float-right');
         //remove the UI element
         const toRemove = 'this.parentNode.parentNode.removeChild(this.parentNode)';
         closeBtn.setAttribute('onclick', toRemove);
@@ -144,7 +144,7 @@ function deleteAll() {
 }
 
 document.addEventListener('DOMContentLoaded', loadStorage);
-let btnAdd = document.querySelector('button[type="submit"]');
+let btnAdd = document.querySelector('#submit');
 btnAdd.addEventListener('click', createUI);
 let btnDelete = document.querySelector('#deleteAll');
 btnDelete.addEventListener('click', deleteAll);

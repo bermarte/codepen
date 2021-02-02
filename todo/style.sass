@@ -1,0 +1,62 @@
+body 
+	font-family: "Open-sans", sans-serif 
+	font-size: 17px 
+	line-height: 1.5em 
+	margin: 0 
+	padding: 0 
+	min-width: 180px 
+.container 
+	margin: auto 
+.primary-text 
+	color: #797979 
+.primary-background 
+	background: #797979 
+.todo-form 
+	form 
+		background: rgba(49, 43, 49, 0.6) 
+		color: #fff 
+		padding: 20px 
+		input[type="text"] 
+			width: 50% 
+			height: 30px 
+			margin-bottom: 10px 
+		textarea 
+			width: 50% 
+			height: 100px 
+		button 
+			width: 50% 
+			padding: 10px 0 
+			border: 0 
+			background: rgba(49, 43, 49, 0.6) 
+			color: #fff 
+		label 
+			text-transform: uppercase 
+.todoitems 
+	margin-top: 20px 
+	width: 100% 
+	text-align: left 
+#todo-list 
+	tr 
+		text-align: left 
+		border-top: 1px solid #cfc9c9 
+		&:hover 
+			background: #b1aeae 
+			padding: 10px 
+			border-top: 1px solid #cfc9c9 
+#title,
+#description 
+	overflow: hidden 
+	white-space: nowrap 
+	text-overflow: ellipsis 
+#deleteAll:hover,
+#save:hover 
+	cursor: pointer 
+#save,
+#deleteAll 
+	font-size: small 
+.text-field 
+	background: transparent 
+	border: none 
+#submit 
+	&:hover 
+		color: white 

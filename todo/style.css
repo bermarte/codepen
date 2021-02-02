@@ -88,3 +88,7 @@ body {
   background: transparent;
   border: none; 
 }
+
+#submit:hover{
+  color: white;
+}
